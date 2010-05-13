@@ -1,0 +1,4 @@
+{foreach email_address in user.email_addresses}
+{email_address}
+{end}
+

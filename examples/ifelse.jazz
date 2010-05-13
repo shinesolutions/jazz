@@ -1,0 +1,5 @@
+{if firstVar}firstVar = {firstVar}
+{elif secondVar}secondVar = {secondVar}
+{else}no var :(
+{end}
+

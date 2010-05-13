@@ -1,0 +1,4 @@
+{foreach person in people}
+Hello, {person}!
+{end}
+

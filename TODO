@@ -1,0 +1,5 @@
+* Proper escaping of echo strings
+* Port unit tests to use node's assert.js
+* Fix bug resulting in incorrect columns being assigned to scanned tokens.
+* If parameter values are functions, call them as functions
+* More tests for illegal syntax

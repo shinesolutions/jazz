@@ -1,0 +1,13 @@
+Dear {recipient}
+
+{if friendly}
+Hope you're well.
+{end}
+
+It has come to our attention that you owe ${amount} in back fees.
+
+Please pay IMMEDIATELY.
+
+Regards,
+{company}
+
