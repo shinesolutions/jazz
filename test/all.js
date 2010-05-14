@@ -133,6 +133,13 @@ suite.addTest("usage of attribute access in a conditional", function() {
   unittest.assertEquals("tom is INACTIVE", output);
 });
 
+suite.addTest("callables", function() {
+  var input = "{test()}";
+  var template = jazz.compile(input);
+  var output = template.eval({"test": function() { return "yay"; }});
+  unittest.assertEquals("yay", output);
+});
+
 suite.run();
 suite.report();
 
