@@ -9,13 +9,13 @@ var template = jazz.compile(data);
 // Render the template three times with different inputs
 //
 
-sys.print(template.eval({
+template.eval({
   "firstVar": "MONKEYS!"
-}));
+}, function(data) { sys.print(data); });
 
-sys.print(template.eval({
+template.eval({
   "secondVar": "GIBBONS!"
-}));
+}, function(data) { sys.print(data); });
 
-sys.print(template.eval({}));
+template.eval({}, function(data) { sys.print(data); });
 
