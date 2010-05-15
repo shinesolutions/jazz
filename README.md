@@ -22,11 +22,13 @@ This example would output the following:
 
     {someVariable}
 
-## Filtering values prior to output
+## Filter functions
 
-*NOT IMPLEMENTED YET*
+You can call filter functions like so:
 
-    {someVariable|someFilter}
+    {someFilter(someVariable)}
+
+!!! It is currently not possible to chain filter functions, but support is planned!
 
 ## Conditional Statements
 
