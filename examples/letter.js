@@ -4,9 +4,9 @@ var fs = require("fs");
 
 var data = fs.readFileSync(__dirname + "/letter.jazz");
 var template = jazz.compile(data);
-sys.puts(template.eval({
+template.eval({
     "recipient":"Tom",
     "friendly":true,
     "amount":"200.00",
     "company": "Gimme, Inc."
-}));
+}, function(data) { sys.puts(data); });
