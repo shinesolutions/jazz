@@ -9,23 +9,23 @@ var testCases = [
     [{name: "Tom"}, "Hello, Tom"]],
   ["Hello, {if name}{name}{end}",
     [{}, "Hello, "],
-    [{name: "Tom"}, "Hello, Tom"]],
+    [{name: "Bob"}, "Hello, Bob"]],
   ["Hello, {if name}{name}{else}Anonymous{end}",
     [{}, "Hello, Anonymous"],
-    [{name: "Tom"}, "Hello, Tom"]],
+    [{name: "Bert"}, "Hello, Bert"]],
   ["Hello, {if firstName}{firstName}{elif lastName}Mr. {lastName}{else}Anonymous{end}",
     [{}, "Hello, Anonymous"],
-    [{firstName: "Tom"}, "Hello, Tom"],
+    [{firstName: "Steve"}, "Hello, Steve"],
     [{lastName: "Lee"}, "Hello, Mr. Lee"]],
   ["Hello, {if firstName}{firstName}{elif lastName}Mr. {lastName}{elif nickName}{nickName}{else}Anonymous{end}",
     [{}, "Hello, Anonymous"],
-    [{firstName: "Tom"}, "Hello, Tom"],
+    [{firstName: "Jeff"}, "Hello, Jeff"],
     [{lastName: "Lee"}, "Hello, Mr. Lee"],
     [{nickName: "Steve"}, "Hello, Steve"],
     [{lastName: "Lee", nickName: "Steve"}, "Hello, Mr. Lee"]],
   ["Hello, {if firstName}{firstName}{elif lastName}Mr. {lastName}{end}",
     [{}, "Hello, "],
-    [{firstName: "Tom"}, "Hello, Tom"],
+    [{firstName: "Bobby"}, "Hello, Bobby"],
     [{lastName: "Lee"}, "Hello, Mr. Lee"]],
   ["{foreach user in users}{user}\n{end}",
     [{users: ["tom", "ben", "stan"]}, "tom\nben\nstan\n"]],
@@ -48,7 +48,7 @@ var testCases = [
   ["{foo()}",
     [{foo: function(cb) { cb("Hello!"); }}, "Hello!"]],
   ["{html(s)}",
-    [{html: function(s, cb) { cb(s.replace(/</g, '&lt;')); }, s: "<lol>"}, "&lt;lol&gt;"]]
+    [{html: function(s, cb) { cb(s.replace(/</g, '&lt;').replace(/>/g, '&gt;')); }, s: "<lol>"}, "&lt;lol&gt;"]]
 ];
 
 testCases.forEach(function(testCase) {
@@ -63,8 +63,10 @@ testCases.forEach(function(testCase) {
     template.eval(params, function(output) {
       assert.equal(output, expected);
     });
+    process.loop();
   }
 });
 
+process.loop();
 sys.puts("OK!");
 
