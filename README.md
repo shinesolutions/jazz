@@ -62,42 +62,4 @@ As are else..if clauses:
         <p>{item}</p>
     {end}
 
-# Performance
-
-Although it's not really fair to compare Jazz to other template engines out there since
-it's still very early in development, we found the following totally contrived benchmark
-to be promising:
-
-## json-template
-
-    $ cat benchmark-jt.js 
-    var jt = require("./json-template");
-
-    var template = jt.Template("Hello, World");
-
-    for (var i = 0; i < 5000000; i++) {
-      template.expand({});
-    }
-
-    $ time node benchmark-jt.js 
-
-    real    0m4.903s
-    user    0m4.896s
-    sys     0m0.004s
-
-## jazz
-
-    $ cat benchmark-jazz.js 
-    var jazz = require("./jazz");
-    var template = jazz.compile("Hello, World");
-
-    for (var i = 0; i < 5000000; i++) {
-      template.eval({});
-    }
-
-    $ time node benchmark-jazz.js 
-
-    real    0m0.683s
-    user    0m0.672s
-    sys     0m0.008s
 
