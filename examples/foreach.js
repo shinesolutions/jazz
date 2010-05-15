@@ -4,4 +4,4 @@ var fs = require("fs");
 
 var data = fs.readFileSync(__dirname + "/foreach.jazz");
 var template = jazz.compile(data);
-sys.puts(template.eval({"people": ["Tom", "Danny", "Steve"]}));
+template.eval({"people": ["Tom", "Danny", "Steve"]}, function(data) { sys.puts(data); });
