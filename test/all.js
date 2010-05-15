@@ -46,7 +46,9 @@ var testCases = [
     [{"user": {"active": true, "name": "Tom"}}, "Tom is ACTIVE"],
     [{"user": {"active": false, "name": "Steve"}}, "Steve is INACTIVE"]],
   ["{foo()}",
-    [{foo: function(cb) { cb("Hello!"); }}, "Hello!"]]
+    [{foo: function(cb) { cb("Hello!"); }}, "Hello!"]],
+  ["{html(s)}",
+    [{html: function(s, cb) { cb(s.replace(/</g, '&lt;')); }, s: "<lol>"}, "&lt;lol&gt;"]]
 ];
 
 testCases.forEach(function(testCase) {
