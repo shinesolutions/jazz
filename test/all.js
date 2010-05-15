@@ -46,7 +46,7 @@ var testCases = [
     [{"user": {"active": true, "name": "Tom"}}, "Tom is ACTIVE"],
     [{"user": {"active": false, "name": "Steve"}}, "Steve is INACTIVE"]],
   ["{foo()}",
-    [{foo: function(cb) { cb("Hello!"); }}, "Hello!", {"parser:debug": true, "compiler:debug": true}]]
+    [{foo: function(cb) { cb("Hello!"); }}, "Hello!"]]
 ];
 
 testCases.forEach(function(testCase) {
