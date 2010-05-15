@@ -5,10 +5,10 @@ var fs = require("fs");
 var data = fs.readFileSync(__dirname + "/html.jazz");
 var template = jazz.compile(data);
 
-sys.puts(template.eval({"username": ""}));
+template.eval({"username": ""}, function(data) { sys.puts(data); });
 
-sys.puts(template.eval({
+template.eval({
   "errors": ["Invalid username", "Please try again"],
   "username": "bert"
-}));
+}, function(data) { sys.puts(data); });
 
