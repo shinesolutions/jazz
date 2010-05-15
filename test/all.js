@@ -48,13 +48,15 @@ var testCases = [
   ["{foo()}",
     [{foo: function(cb) { cb("Hello!"); }}, "Hello!"]],
   ["{html(s)}",
-    [{html: function(s, cb) { cb(s.replace(/</g, '&lt;').replace(/>/g, '&gt;')); }, s: "<lol>"}, "&lt;lol&gt;"]]
+    [{html: function(s, cb) { cb(s.replace(/</g, '&lt;').replace(/>/g, '&gt;')); }, s: "<lol>"}, "&lt;lol&gt;"]],
+  ["{delay(tv)}",
+    [{delay: function(tv, cb) { setTimeout(function() { cb("Done!"); }, tv) }, tv: 500}, "Done!"]]
 ];
 
 testCases.forEach(function(testCase) {
   var source = testCase[0];
   var tests = testCase.slice(1);
-  for (var i = 0; i < tests.length; i++) {
+  for (var i = 0; i < tests.length; i++) (function() {
     var params = tests[i][0] || {};
     var expected = tests[i][1] || "";
     var options = tests[i][2] || {};
@@ -63,8 +65,7 @@ testCases.forEach(function(testCase) {
     template.eval(params, function(output) {
       assert.equal(output, expected);
     });
-    process.loop();
-  }
+  });
 });
 
 process.loop();
