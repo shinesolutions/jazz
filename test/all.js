@@ -65,7 +65,7 @@ testCases.forEach(function(testCase) {
     template.eval(params, function(output) {
       assert.equal(output, expected);
     });
-  });
+  })();
 });
 
 process.loop();
