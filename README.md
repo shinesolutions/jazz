@@ -13,8 +13,6 @@ This example would output the following:
 
 # Syntax
 
-!!! SYNTAX IS VERY MUCH STILL SUBJECT TO CHANGE !!!
-
 ## Expressions
 
 ## Printing variables
