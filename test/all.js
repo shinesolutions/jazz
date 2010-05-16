@@ -50,7 +50,9 @@ var testCases = [
   ["{html(s)}",
     [{html: function(s, cb) { cb(s.replace(/</g, '&lt;').replace(/>/g, '&gt;')); }, s: "<lol>"}, "&lt;lol&gt;"]],
   ["{delay(tv)}",
-    [{delay: function(tv, cb) { setTimeout(function() { cb("Done!"); }, tv) }, tv: 500}, "Done!"]]
+    [{delay: function(tv, cb) { setTimeout(function() { cb("Done!"); }, tv) }, tv: 500}, "Done!"]],
+  ["{foo('a string')}",
+    [{foo: function(s, cb) { cb(s); }}, "a string"]]
 ];
 
 testCases.forEach(function(testCase) {
