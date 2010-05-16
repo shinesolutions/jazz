@@ -1,2 +1,6 @@
 * Proper escaping of echo strings
 * More tests for illegal syntax
+* Allow chaining of Calls.
+* Make Calls an expression?
+  Don't know how feasible this is: could be complex (e.g. async Call in an
+  if statement)
