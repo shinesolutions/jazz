@@ -52,7 +52,9 @@ var testCases = [
   ["{delay(tv)}",
     [{delay: function(tv, cb) { setTimeout(function() { cb("Done!"); }, tv) }, tv: 500}, "Done!"]],
   ["{foo('a string')}",
-    [{foo: function(s, cb) { cb(s); }}, "a string"]]
+    [{foo: function(s, cb) { cb(s); }}, "a string"]],
+  ["{foo('bar','baz')}",
+    [{foo: function(a, b, cb) { cb(a + "=" + b); }}, "bar=baz"]]
 ];
 
 testCases.forEach(function(testCase) {
