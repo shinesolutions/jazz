@@ -84,6 +84,29 @@ As are else..if clauses:
         Hello, Captain Anonymous
     {end}
 
+Limited logical expressions are also possible:
+
+    {if user.lastName and user.isVip}
+        Hello, Mr. {user.lastName}, my good man!
+    {end}
+
+    {if fred.tired or fred.bored}
+        Fred: "Yawn!"
+    {end}
+
+    {if not awake}
+        Zzz
+    {end}
+
+*Please note that "not a and b" is equivalent to "not (a and b)" rather than
+"(not a) and b". This is a bit of a wart. (Happy to take a patch!)*
+
+You can also group expressions using parentheses:
+
+    {if (a and b) or c}
+        ...
+    {end}
+
 *and/or expressions are still TODO*
 
 ## Looping over an array
@@ -93,6 +116,6 @@ As are else..if clauses:
     {end}
 
 
-The value being iterated over can be any iterable expression supporting
+The value being iterated over can be any expression supporting
 an Array-like interface.
 
