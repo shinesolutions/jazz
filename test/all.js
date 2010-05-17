@@ -74,7 +74,15 @@ var testCases = [
     [{a: true, b: true, c: false}, "either"],
     [{a: true, b: true, c: true}, "either"],
     [{a: false, b: true, c: true}, "either"],
-    [{a: true, b: false, c: false}, "neither"]]
+    [{a: true, b: false, c: false}, "neither"]],
+  ["{if not a}not a{else}a{end}",
+    [{a: true}, "a"],
+    [{a: false}, "not a"]],
+  ["{if not a and b}not a and b{end}",
+    [{a: false, b: true}, "not a and b"],
+    [{a: true, b: false}, "not a and b"]],
+  ["{if (not a) and not b}(not a) and not b{end}",
+    [{a: false, b: false}, "(not a) and not b"]]
 ];
 
 testCases.forEach(function(testCase) {
