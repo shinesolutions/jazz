@@ -28,7 +28,8 @@ You can call filter functions like so:
 
     {someFilter(arg1, arg2)}
 
-*It is currently not possible to chain filter functions, but support is planned!*
+*Filter functions are statements, NOT expressions so they cannot be chained
+nor used in if/forelse/etc. tests*
 
 ### Implementing filter functions
 
