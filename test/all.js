@@ -54,7 +54,10 @@ var testCases = [
   ["{foo('a string')}",
     [{foo: function(s, cb) { cb(s); }}, "a string"]],
   ["{foo('bar','baz')}",
-    [{foo: function(a, b, cb) { cb(a + "=" + b); }}, "bar=baz"]]
+    [{foo: function(a, b, cb) { cb(a + "=" + b); }}, "bar=baz"]],
+  ["{if (foo)}{foo}{end}",
+    [{foo: true}, "true"],
+    [{foo: false}, ""]]
 ];
 
 testCases.forEach(function(testCase) {
