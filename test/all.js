@@ -57,7 +57,24 @@ var testCases = [
     [{foo: function(a, b, cb) { cb(a + "=" + b); }}, "bar=baz"]],
   ["{if (foo)}{foo}{end}",
     [{foo: true}, "true"],
-    [{foo: false}, ""]]
+    [{foo: false}, ""]],
+  ["{if a and b}a and b{elif a}a only{elif b}b only{else}neither :({end}",
+    [{a: true, b: true}, "a and b"],
+    [{a: true, b: false}, "a only"],
+    [{a: false, b: true}, "b only"],
+    [{a: false, b:false}, "neither :("]],
+  ["{if a and (b or c)}both{elif a}left{elif b or c}right{else}none{end}",
+    [{a: true, b: true, c: false}, "both"],
+    [{a: true, b: false, c: true}, "both"],
+    [{a: true, b: false, c: false}, "left"],
+    [{a: false, b: true, c: false}, "right"],
+    [{a: false, b: false, c: true}, "right"],
+    [{a: false, b: false, c: false}, "none"]],
+  ["{if (a and b) or c}either{else}neither{end}",
+    [{a: true, b: true, c: false}, "either"],
+    [{a: true, b: true, c: true}, "either"],
+    [{a: false, b: true, c: true}, "either"],
+    [{a: true, b: false, c: false}, "neither"]]
 ];
 
 testCases.forEach(function(testCase) {
