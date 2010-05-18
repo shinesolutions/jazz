@@ -105,8 +105,6 @@ You can also group expressions using parentheses:
         ...
     {end}
 
-*and/or expressions are still TODO*
-
 ## Looping over an array
 
     {foreach item in someArray}
