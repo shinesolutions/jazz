@@ -99,9 +99,6 @@ Limited logical expressions are also possible:
         Zzz
     {end}
 
-*Please note that "not a and b" is equivalent to "not (a and b)" rather than
-"(not a) and b". This is a bit of a wart. (Happy to take a patch!)*
-
 You can also group expressions using parentheses:
 
     {if (a and b) or c}

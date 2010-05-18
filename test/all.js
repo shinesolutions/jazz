@@ -80,7 +80,8 @@ var testCases = [
     [{a: false}, "not a"]],
   ["{if not a and b}not a and b{end}",
     [{a: false, b: true}, "not a and b"],
-    [{a: true, b: false}, "not a and b"]],
+    [{a: true, b: false}, ""],
+    [{a: true, b: true}, ""]],
   ["{if (not a) and not b}(not a) and not b{end}",
     [{a: false, b: false}, "(not a) and not b"]]
 ];
