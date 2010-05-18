@@ -83,7 +83,17 @@ var testCases = [
     [{a: true, b: false}, ""],
     [{a: true, b: true}, ""]],
   ["{if (not a) and not b}(not a) and not b{end}",
-    [{a: false, b: false}, "(not a) and not b"]]
+    [{a: false, b: false}, "(not a) and not b"]],
+  ["{if a eq 'test'}a{else}b{end}",
+    [{a: "test"}, "a"],
+    [{a: "muppet"}, "b"]],
+  ["{if a eq 'foo' and b eq 'bar'}{a},{b}{else}{a}{end}",
+    [{a: "foo", b: "bar"}, "foo,bar"],
+    [{a: "foo", b: "muppet"}, "foo"],
+    [{a: "quack", b: "moo"}, "quack"]],
+  ["{if a neq 'yes'}no :({else}yes :){end}",
+    [{a: "yes"}, "yes :)"],
+    [{a: "ffa"}, "no :("]]
 ];
 
 testCases.forEach(function(testCase) {
