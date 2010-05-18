@@ -99,6 +99,16 @@ Limited logical expressions are also possible:
         Zzz
     {end}
 
+eq & neq comparison operators are available for comparing two values:
+
+    {if config.feature eq "enabled"}
+        Feature is enabled!
+    {end}
+
+    {if status neq "inactive"}
+        Huzzah!
+    {end}
+
 You can also group expressions using parentheses:
 
     {if (a and b) or c}
