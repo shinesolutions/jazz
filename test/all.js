@@ -93,7 +93,11 @@ var testCases = [
     [{a: "quack", b: "moo"}, "quack"]],
   ["{if a neq 'yes'}no :({else}yes :){end}",
     [{a: "yes"}, "yes :)"],
-    [{a: "ffa"}, "no :("]]
+    [{a: "ffa"}, "no :("]],
+  ["{sum(5, 10)}",
+    [{sum: function(a, b, cb) { cb(a + b); }}, "15"]],
+  ["{product(10, 0x0a)}",
+    [{product: function(a, b, cb) { cb(a * b); }}, "100"]]
 ];
 
 testCases.forEach(function(testCase) {
