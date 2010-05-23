@@ -21,6 +21,8 @@ This works for any type of expression, so the following should also work:
 
     {users.fred}
     {"hello"}
+    {45}
+    {a eq b}
 
 ## Filter functions
 
@@ -28,8 +30,11 @@ You can call filter functions like so:
 
     {someFilter(arg1, arg2)}
 
-*Filter functions are statements, NOT expressions so they cannot be chained
-nor used in if/forelse/etc. tests*
+Filter functions are statements, NOT expressions so they cannot be chained
+nor used in if/forelse/etc. tests. However, calls can be made on any type
+of expression -- e.g.
+
+    {math.sin(45)}
 
 ### Implementing filter functions
 

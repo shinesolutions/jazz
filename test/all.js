@@ -104,7 +104,14 @@ var testCases = [
   ["{'test'}",
     [{}, "test"]],
   ["{math.sum(2, 5)}",
-    [{math: {sum: function(a, b, cb) { cb(a + b); }}}, "7"]]
+    [{math: {sum: function(a, b, cb) { cb(a + b); }}}, "7"]],
+  ["{1 and 2}",
+    [{}, "2"]],
+  ["{1 eq b}",
+    [{b: 1}, "true"],
+    [{b: 2}, "false"]],
+  ["{45}",
+    [{}, "45"]]
 ];
 
 testCases.forEach(function(testCase) {
