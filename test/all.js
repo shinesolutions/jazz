@@ -100,7 +100,11 @@ var testCases = [
     [{product: function(a, b, cb) { cb(a * b); }}, "100"]],
   ["{gt(1.5, b)}",
     [{b: 2.0, gt: function(a, b, cb) { cb(a > b); }}, "false"],
-    [{b: 1.0, gt: function(a, b, cb) { cb(a > b); }}, "true"]]
+    [{b: 1.0, gt: function(a, b, cb) { cb(a > b); }}, "true"]],
+  ["{'test'}",
+    [{}, "test"]],
+  ["{math.sum(2, 5)}",
+    [{math: {sum: function(a, b, cb) { cb(a + b); }}}, "7"]]
 ];
 
 testCases.forEach(function(testCase) {
