@@ -2,7 +2,7 @@ var jazz = require("../lib/jazz");
 var sys = require("sys");
 var fs = require("fs");
 
-var data = fs.readFileSync(__dirname + "/html.jazz");
+var data = fs.readFileSync(__dirname + "/html.jazz", "utf8");
 var template = jazz.compile(data);
 
 template.eval({"username": ""}, function(data) { sys.puts(data); });
