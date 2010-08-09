@@ -111,7 +111,9 @@ var testCases = [
     [{b: 1}, "true"],
     [{b: 2}, "false"]],
   ["{45}",
-    [{}, "45"]]
+    [{}, "45"]],
+  ["{{}}",
+    [{}, "{}"]]
 ];
 
 testCases.forEach(function(testCase) {
