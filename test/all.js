@@ -125,7 +125,9 @@ var testCases = [
   ["{45}",
     [{}, "45"]],
   ["{{}}",
-    [{}, "{}"]]
+    [{}, "{}"]],
+  ["{pagination.end}",
+    [{pagination: { end: "This shouldn't be picked up as a token" }}, "This shouldn't be picked up as a token"]]
 ];
 
 testCases.forEach(function(testCase) {
