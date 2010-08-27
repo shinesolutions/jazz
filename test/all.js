@@ -2,6 +2,16 @@ var assert = require("assert");
 var jazz = require("../lib/jazz");
 var sys = require("sys");
 
+function Muffin(numberOfBites) {
+  this._numberOfBites = numberOfBites;
+};
+
+Muffin.prototype = { 
+  get numberOfBites() {
+    return this._numberOfBites;
+  }
+};
+
 var testCases = [
   ["Hello, World",
     [{}, "Hello, World"]],
@@ -127,7 +137,9 @@ var testCases = [
   ["{{}}",
     [{}, "{}"]],
   ["{pagination.end}",
-    [{pagination: { end: "This shouldn't be picked up as a token" }}, "This shouldn't be picked up as a token"]]
+    [{pagination: { end: "This shouldn't be picked up as a token" }}, "This shouldn't be picked up as a token"]],
+  ["{muffin.numberOfBites}",
+    [{muffin: new Muffin(5) }, "5"]]
 ];
 
 testCases.forEach(function(testCase) {
