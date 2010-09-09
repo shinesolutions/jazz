@@ -139,7 +139,15 @@ var testCases = [
   ["{pagination.end}",
     [{pagination: { end: "This shouldn't be picked up as a token" }}, "This shouldn't be picked up as a token"]],
   ["{muffin.numberOfBites}",
-    [{muffin: new Muffin(5) }, "5"]]
+    [{muffin: new Muffin(5) }, "5"]],
+  ["{consumeMuffin({'jeepers': 'cool'})}",
+    [{consumeMuffin: function(hash, cb) { cb(hash['jeepers']); }}, "cool"]],
+  ["{chokeMuffin({'oh wow': { 'this isnt cool at all': 'really isnt' }})}",
+    [{chokeMuffin: function(hash, cb) { cb(hash['oh wow']['this isnt cool at all']); }}, "really isnt"]],
+  ["{explodingMuffin({'kapow':{'geegolly':{'ohno':powpow}}})}",
+    [{powpow: 'howdy', explodingMuffin: function(hash, cb) { cb(hash['kapow']['geegolly']['ohno']); }}, "howdy"]],
+  ["{megaMuffin({'size':pewpew.maximum})}",
+    [{pewpew: {maximum: 5}, megaMuffin: function(hash, cb) { cb(hash['size']); }}, "5"]]
 ];
 
 testCases.forEach(function(testCase) {
