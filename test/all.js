@@ -147,7 +147,9 @@ var testCases = [
   ["{explodingMuffin({'kapow':{'geegolly':{'ohno':powpow}}})}",
     [{powpow: 'howdy', explodingMuffin: function(hash, cb) { cb(hash['kapow']['geegolly']['ohno']); }}, "howdy"]],
   ["{megaMuffin({'size':pewpew.maximum})}",
-    [{pewpew: {maximum: 5}, megaMuffin: function(hash, cb) { cb(hash['size']); }}, "5"]]
+    [{pewpew: {maximum: 5}, megaMuffin: function(hash, cb) { cb(hash['size']); }}, "5"]],
+  ["{megaMuffin({'size':pewpew.maximum,'legs':pewpew.numberOfLegs,'ears':pewpew.numberOfEars})}",
+    [{pewpew: {maximum: 5, numberOfLegs: 2, numberOfEars: 2}, megaMuffin: function(hash, cb) { cb(hash['size'] + hash['legs']); }}, "7"]],
 ];
 
 testCases.forEach(function(testCase) {
