@@ -161,7 +161,7 @@ testCases.forEach(function(testCase) {
     var options = tests[i][2] || {};
 
     var template = jazz.compile(source, options);
-    template.eval(params, function(output) {
+    template.process(params, function(output) {
       assert.equal(output, expected);
     });
   })();
