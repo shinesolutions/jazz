@@ -150,6 +150,8 @@ var testCases = [
     [{pewpew: {maximum: 5}, megaMuffin: function(hash, cb) { cb(hash['size']); }}, "5"]],
   ["{megaMuffin({'size':pewpew.maximum,'legs':pewpew.numberOfLegs,'ears':pewpew.numberOfEars})}",
     [{pewpew: {maximum: 5, numberOfLegs: 2, numberOfEars: 2}, megaMuffin: function(hash, cb) { cb(hash['size'] + hash['legs']); }}, "7"]],
+  ["{captainAmerica({'wow': true, 'notwow': false})}",
+    [{captainAmerica: function(hash, cb) { if (hash['wow'] && !hash['notwow']) { cb("yay"); } else { cb("daww"); }}}, "yay" ]]
 ];
 
 testCases.forEach(function(testCase) {
