@@ -151,7 +151,9 @@ var testCases = [
   ["{megaMuffin({'size':pewpew.maximum,'legs':pewpew.numberOfLegs,'ears':pewpew.numberOfEars})}",
     [{pewpew: {maximum: 5, numberOfLegs: 2, numberOfEars: 2}, megaMuffin: function(hash, cb) { cb(hash['size'] + hash['legs']); }}, "7"]],
   ["{captainAmerica({'wow': true, 'notwow': false})}",
-    [{captainAmerica: function(hash, cb) { if (hash['wow'] && !hash['notwow']) { cb("yay"); } else { cb("daww"); }}}, "yay" ]]
+    [{captainAmerica: function(hash, cb) { if (hash['wow'] && !hash['notwow']) { cb("yay"); } else { cb("daww"); }}}, "yay" ]],
+  ["{foreach a in sambuca}{a}{end}",
+    [{}, ""]]
 ];
 
 testCases.forEach(function(testCase) {
