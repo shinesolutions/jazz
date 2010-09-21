@@ -2,6 +2,8 @@ var assert = require("assert");
 var jazz = require("../lib/jazz");
 var sys = require("sys");
 
+sys.puts("Running tests ...");
+
 function Muffin(numberOfBites) {
   this._numberOfBites = numberOfBites;
 };
@@ -152,8 +154,8 @@ var testCases = [
     [{pewpew: {maximum: 5, numberOfLegs: 2, numberOfEars: 2}, megaMuffin: function(hash, cb) { cb(hash['size'] + hash['legs']); }}, "7"]],
   ["{captainAmerica({'wow': true, 'notwow': false})}",
     [{captainAmerica: function(hash, cb) { if (hash['wow'] && !hash['notwow']) { cb("yay"); } else { cb("daww"); }}}, "yay" ]],
-  ["{foreach a in sambuca}{a}{end}",
-    [{}, ""]]
+  ["{foreach a in sambuca}{a}{end}a",
+    [{}, "a"]]
 ];
 
 testCases.forEach(function(testCase) {
@@ -163,7 +165,6 @@ testCases.forEach(function(testCase) {
     var params = tests[i][0] || {};
     var expected = tests[i][1] || "";
     var options = tests[i][2] || {};
-
     var template = jazz.compile(source, options);
     template.process(params, function(output) {
       assert.equal(output, expected);
@@ -171,6 +172,6 @@ testCases.forEach(function(testCase) {
   })();
 });
 
-process.loop();
-sys.puts("OK!");
-
+process.on('exit', function() {
+    sys.puts("OK!");
+});
