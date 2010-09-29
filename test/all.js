@@ -155,7 +155,9 @@ var testCases = [
   ["{captainAmerica({'wow': true, 'notwow': false})}",
     [{captainAmerica: function(hash, cb) { if (hash['wow'] && !hash['notwow']) { cb("yay"); } else { cb("daww"); }}}, "yay" ]],
   ["{foreach a in sambuca}{a}{end}a",
-    [{}, "a"]]
+    [{}, "a"]],
+  ["{foreach a in sambuca}{forEachIndex}{end}{foreach a in sambuca}{forEachIndex}{end}",
+    [{sambuca: [ 'a', 'b', 'c' ]}, "012012"]]
 ];
 
 testCases.forEach(function(testCase) {
