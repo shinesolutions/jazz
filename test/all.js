@@ -157,7 +157,9 @@ var testCases = [
   ["{foreach a in sambuca}{a}{end}a",
     [{}, "a"]],
   ["{foreach a in sambuca}{__index}{end}{foreach a in sambuca}{__index}{end}",
-    [{sambuca: [ 'a', 'b', 'c' ]}, "012012"]]
+    [{sambuca: [ 'a', 'b', 'c' ]}, "012012"]],
+  ["{foreach a in sambuca}{__count}{end}{foreach a in sambuca}{__count}{end}",
+    [{sambuca: [ 'a', 'b', 'c' ]}, "123123"]]
 ];
 
 testCases.forEach(function(testCase) {
