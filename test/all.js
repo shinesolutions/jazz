@@ -159,7 +159,13 @@ var testCases = [
   ["{foreach a in sambuca}{__index}{end}{foreach a in sambuca}{__index}{end}",
     [{sambuca: [ 'a', 'b', 'c' ]}, "012012"]],
   ["{foreach a in sambuca}{__count}{end}{foreach a in sambuca}{__count}{end}",
-    [{sambuca: [ 'a', 'b', 'c' ]}, "123123"]]
+    [{sambuca: [ 'a', 'b', 'c' ]}, "123123"]],
+  ["{if @thing('a') and @powpow.anotherthing('b')}blahblah{end}",
+    [{powpow: { anotherthing: function(char) { return false } }, thing: function(char) { return true; }}, "" ]],
+  ["{if @thing('a') or @powpow.anotherthing('b')}blahblah{end}",
+    [{powpow: { anotherthing: function(char) { return true } }, thing: function(char) { return false; }}, "blahblah" ]],
+  ["{if @blah('a') eq 'A'}HI SIR{end}",
+    [{blah: function(something) { return something.toUpperCase(); } }, "HI SIR"]]
 ];
 
 testCases.forEach(function(testCase) {
