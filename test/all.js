@@ -164,8 +164,8 @@ var testCases = [
     [{powpow: { anotherthing: function(char) { return false } }, thing: function(char) { return true; }}, "" ]],
   ["{if @thing('a') or @powpow.anotherthing('b')}blahblah{end}",
     [{powpow: { anotherthing: function(char) { return true } }, thing: function(char) { return false; }}, "blahblah" ]],
-  ["{if @blah('a') eq 'A'}HI SIR{end}",
-    [{blah: function(something) { return something.toUpperCase(); } }, "HI SIR"]]
+  ["{if @blah('a', 'b') eq 'AB'}HI SIR{end}",
+    [{blah: function(something, somethings) { return something.toUpperCase() + somethings.toUpperCase(); } }, "HI SIR"]]
 ];
 
 testCases.forEach(function(testCase) {
