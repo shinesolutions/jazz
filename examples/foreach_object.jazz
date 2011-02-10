@@ -1,0 +1,5 @@
+{foreach field in doc}
+{field.key} = {field.value}
+
+{end}
+
