@@ -160,6 +160,8 @@ var testCases = [
     [{sambuca: [ 'a', 'b', 'c' ]}, "012012"]],
   ["{foreach a in sambuca}{__count}{end}{foreach a in sambuca}{__count}{end}",
     [{sambuca: [ 'a', 'b', 'c' ]}, "123123"]],
+  ["{foreach smurfism in smurf}{smurfism.key} = {smurfism.value}\n{end}",
+    [{"smurf": {"name": "Papa", "age": 1123123, "colour": "Blue"}}, "name = Papa\nage = 1123123\ncolour = Blue\n"]],
   ["{if @thing('a') and @powpow.anotherthing('b')}blahblah{end}",
     [{powpow: { anotherthing: function(char) { return false } }, thing: function(char) { return true; }}, "" ]],
   ["{if @thing('a') or @powpow.anotherthing('b')}blahblah{end}",
