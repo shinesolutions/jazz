@@ -169,7 +169,19 @@ var testCases = [
   ["{if @blah('a', 'b') eq 'AB'}HI SIR{end}",
     [{blah: function(something, somethings) { return something.toUpperCase() + somethings.toUpperCase(); } }, "HI SIR"]],
   ["{@foo()}",
-    [{foo: function() { return "Hey!"; }}, "Hey!"]]
+    [{foo: function() { return "Hey!"; }}, "Hey!"]],
+  ["{array[0]}",
+    [{array : ["one"]}, "one"]],
+  ["{obj.array[0]}",
+    [{obj : {array : ["one"]}}, "one"]],
+  ["{array[obj.prop]}",
+    [{array : ["one", "two"], obj : {"prop" : 1}}, "two"]],
+  ["{array[0][1]}",
+    [{array : [["one", ["two"]]]}, "two"]],
+  ["{array['text prop']}",
+    [{array : {"text prop" : "two"}}, "two"]]
+  /*["{array[obj.prop[1]]}", //todo currently nested array brackets not supported by the parser
+    [{array : ["one", "two"], obj : {"prop" : [1, 0]}}, "two"]]*/
 ];
 
 testCases.forEach(function(testCase) {
