@@ -1,7 +1,7 @@
 {
   "name": "jazz",
   "description": "A simple template engine built specifically for nodejs.",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Thomas Lee <thomas.lee@shinetech.com>",
   "keywords": ["template", "engine"],
   "main": "./lib/jazz.js",
