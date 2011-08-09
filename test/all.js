@@ -179,9 +179,19 @@ var testCases = [
   ["{array[0][1]}",
     [{array : [["one", ["two"]]]}, "two"]],
   ["{array['text prop']}",
-    [{array : {"text prop" : "two"}}, "two"]]
-  /*["{array[obj.prop[1]]}", //todo currently nested array brackets not supported by the parser
-    [{array : ["one", "two"], obj : {"prop" : [1, 0]}}, "two"]]*/
+    [{array : {"text prop" : "two"}}, "two"]],
+  ["{array[abba]}",
+    [{array : {"text prop" : "two"}, abba: 'text prop'}, "two"]],
+  ["{array[abba].eye}",
+    [{array : {"text prop" : { 'eye': "two" }}, abba: 'text prop'}, "two"]],
+  ["{if a eq true}AA1{elsif b eq true}BB1{else}CC1{end}",
+    [{ a: false, b: true }, 'BB1']],
+  ["{if a eq true}AA2{else if b eq true}BB2{else}CC2{end}",
+    [{ a: false, b: true }, 'BB2']],
+  ["{imafunction(array[abba], { something: array[abba] })}",
+    [{ imafunction: function (one, two, cb) { cb(one + two.something); }, array: { 'kno': 'AA' }, abba: 'kno' }, "AAAA"]],
+  ["{array[obj.prop[1]]}",
+     [{array : ["one", "two"], obj : {"prop" : [0, 1]}}, "two"]]
 ];
 
 testCases.forEach(function(testCase) {
