@@ -49,7 +49,6 @@ result. e.g. here we simulate a blocking operation using setTimeout().
 
     // sum.js
 
-    var sys = require("sys");
     var jazz = require("jazz");
 
     var params = {
@@ -59,7 +58,7 @@ result. e.g. here we simulate a blocking operation using setTimeout().
             }, 2000);
         }
     }
-    jazz.compile("sum.jazz").eval(params, function(output) { sys.puts(output); });
+    jazz.compile("sum.jazz").eval(params, function(output) { console.log(output); });
 
 Note that even though the execution of the callback is delayed, this example still
 works.

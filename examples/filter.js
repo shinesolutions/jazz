@@ -1,5 +1,4 @@
 var jazz = require("../lib/jazz");
-var sys = require("sys");
 var fs = require("fs");
 
 var data = fs.readFileSync(__dirname + "/filter.jazz", "utf8");
@@ -9,7 +8,7 @@ template.eval({
     cb(s.replace(/</g, '&lt;').replace(/>/g, '&gt;'));
   },
   "value": "<foo!>"
-}, function(data) { sys.puts(data); });
+}, function(data) { console.log(data); });
 
 
 
