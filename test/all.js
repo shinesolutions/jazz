@@ -1,8 +1,7 @@
 var assert = require("assert");
 var jazz = require("../lib/jazz");
-var sys = require("sys");
 
-sys.puts("Running tests ...");
+console.log("Running tests ...");
 
 function Muffin(numberOfBites) {
   this._numberOfBites = numberOfBites;
@@ -205,5 +204,5 @@ testCases.forEach(function(testCase) {
 });
 
 process.on('exit', function() {
-    sys.puts("OK!");
+    console.log("OK!");
 });

@@ -1,5 +1,4 @@
 var jazz = require("../lib/jazz");
-var sys = require("sys");
 var fs = require("fs");
 
 var data = fs.readFileSync(__dirname + "/ifelse.jazz", "utf8");
@@ -11,11 +10,11 @@ var template = jazz.compile(data);
 
 template.eval({
   "firstVar": "MONKEYS!"
-}, function(data) { sys.print(data); });
+}, function(data) { console.log(data); });
 
 template.eval({
   "secondVar": "GIBBONS!"
-}, function(data) { sys.print(data); });
+}, function(data) { console.log(data); });
 
-template.eval({}, function(data) { sys.print(data); });
+template.eval({}, function(data) { console.log(data); });
 
