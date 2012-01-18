@@ -1,5 +1,4 @@
 var jazz = require("../lib/jazz");
-var sys = require("sys");
 var fs = require("fs");
 
 var data = fs.readFileSync(__dirname + "/include_main.jazz", "utf8");
@@ -11,5 +10,5 @@ var params = {
   }
 };
 
-template.eval(params, function(data) { sys.puts(data); });
+template.eval(params, function(data) { console.log(data); });
 
