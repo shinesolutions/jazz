@@ -135,7 +135,7 @@ an Array-like interface.
         <p>{pair.key} = {pair.value}</p>
     {end}
     
-## Sychronous functions
+## Synchronous functions
 
     {if @blah('a')}
         <p>There were so many blahs in a</p>
