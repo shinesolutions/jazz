@@ -129,3 +129,29 @@ You can also group expressions using parentheses:
 The value being iterated over can be any expression supporting
 an Array-like interface.
 
+## Looping over an object
+
+    {foreach pair in someObject}
+        <p>{pair.key} = {pair.value}</p>
+    {end}
+    
+## Sychronous functions
+
+    {if @blah('a')}
+        <p>There were so many blahs in a</p>
+    {end}
+
+The function is provided to the template the same way asynchronous functions are, just with a return instead of a cb.
+
+## Loop counters / index
+
+    {foreach pair in someObject}
+        <p>Loop number (1 based): {__count}</p>
+        <p>Index (0 based): {__index}</p>
+        <p>{pair.key} = {pair.value}</p>
+    {end}
+    
+## Looking into arrays/objects
+
+        <p>{object['array'][0].cheese}</p>
+
