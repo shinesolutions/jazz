@@ -1,5 +1,8 @@
 Jazz is a simple template engine built specifically for nodejs.
 
+This is a fork of the original Jazz templating engine which is hosted here: [Shinetech Jazz templating engine](https://github.com/shinetech/jazz)
+This fork enhances the templating engine by asynchronous conditional statements.
+
 # Usage
 
     var jazz = require("jazz");
@@ -63,7 +66,7 @@ result. e.g. here we simulate a blocking operation using setTimeout().
 Note that even though the execution of the callback is delayed, this example still
 works.
 
-## Conditional Statements
+## Conditional Statements (synchronous)
 
 You can check if a variable evaluates to a true value like so:
 
@@ -119,6 +122,61 @@ You can also group expressions using parentheses:
         ...
     {end}
 
+## Conditional Statements (asynchronous)
+
+With _when_ it's possible to call an externel function to check if a certain part shall be included or not.
+
+    // condition.jazz
+
+    {when isStringFoo("foo")}
+      The parameter is foo.
+    {end}
+
+    // condition.js
+
+    var jazz = require("jazz");
+
+    var params = {
+        isStringFoo: function(arg1, cb) {
+          cb(arg1 == "foo");
+        }
+    }
+
+    jazz.compile("condition.jazz").eval(params, function(output) { console.log(output); });
+
+You can use _otherwise_ to include another part when the check returns false.
+
+    {when isStringFoo("bar")}
+      The parameter is foo.
+    {otherwhise}
+      The parameter is NOT foo.
+    {end}
+
+It's also possible to check on false
+
+    {when not isStringFoo("bar")}
+      The parameter is NOT foo.
+    {end}
+
+Or to combine _not_ and _otherwise_
+
+    {when not isStringFoo("bar")}
+      The parameter is NOT foo.
+    {otherwise}
+      The parameter IS foo.
+    {end}
+
+As it is already possible to encapsulate expression, this aspect can also be applied here without restriction.
+
+    {when isStringFoo("foo")}
+      The parameter is NOT foo. {someVariable}
+      <div>
+        {if name eq "Max"}
+          {name}
+        {end}
+      </div>
+    {end}
+
 ## Looping over an array
 
     {foreach item in someArray}
@@ -134,7 +192,7 @@ an Array-like interface.
     {foreach pair in someObject}
         <p>{pair.key} = {pair.value}</p>
     {end}
-    
+
 ## Synchronous functions
 
     {if @blah('a')}
@@ -150,8 +208,7 @@ The function is provided to the template the same way asynchronous functions are
         <p>Index (0 based): {__index}</p>
         <p>{pair.key} = {pair.value}</p>
     {end}
-    
+
 ## Looking into arrays/objects
 
         <p>{object['array'][0].cheese}</p>
-
