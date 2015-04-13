@@ -3,7 +3,8 @@ Jazz is a simple template engine built specifically for nodejs.
 # Usage
 
     var jazz = require("jazz");
-
+    var sys = require("sys");
+    
     var template = jazz.compile("my template source code {someVariable}");
     template.eval({"someVariable": "lolmuffin"}, function(data) { sys.puts(data); });
 
